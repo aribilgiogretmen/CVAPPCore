@@ -1,0 +1,95 @@
+﻿@model Cv
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<h2>Cv Detay</h2>
+
+<div>
+    <h4>Cvlerim</h4>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-2">Title</dt>
+        <dd class="col-sm-10">@Model.Title</dd>
+
+
+        <dt class="col-sm-2">Mail</dt>
+        <dd class="col-sm-10">@Model.User.Email</dd>
+
+        <dt class="col-sm-2">Kullanıcı</dt>
+        <dd class="col-sm-10">@Model.User.Firstname @Model.User.Lastname</dd>
+
+    </dl>
+
+    <h4>Deneyimlerim</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Firma İsmi</td>
+                <td>Pozisyon</td>
+                <td>Başlama Tarihi</td>
+                <td>Bitiş Tarihi</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Experience)
+            {
+                <tr>
+                    <td>@item.CompanyName</td>
+                    <td>@item.Position</td>
+                    <td>@item.StartDate.ToShortDateString()</td>
+                    <td>@item.EndDate?.ToShortDateString()</td>
+
+
+                </tr>
+                
+            }
+
+
+        </tbody>
+
+
+
+    </table>
+
+
+    <h4>Eğitimlerim</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Okul Adı</td>
+                <td>Seviye</td>
+                <td>Başlama Tarihi</td>
+                <td>Bitiş Tarihi</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Education)
+            {
+                <tr>
+                    <td>@item.EducationName</td>
+                    <td>@item.Dagree</td>
+                    <td>@item.StartDate.ToShortDateString()</td>
+                    <td>@item.EndDate?.ToShortDateString()</td>
+
+
+                </tr>
+
+            }
+
+
+        </tbody>
+
+
+
+    </table>
+
+
+</div>

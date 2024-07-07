@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Cv>
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<h2>CV lerim</h2>
+
+<p> <a asp-action="Create">Yeni Cv Oluştur</a></p>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+            <td>Title</td>
+            <td>User</td>
+            <td>Aksiyon</td>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+            <td>@item.Title</td>
+            <td>@item.User.Firstname @item.User.Lastname</td>
+            <td>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Güncelle </a>
+                <a asp-action="Detail" class="btn btn-primary" asp-route-id="@item.Id">Detay </a>
+                <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.Id">Sil </a>
+
+            </td>
+          </tr>
+        }
+
+    </tbody>
+
+
+</table>

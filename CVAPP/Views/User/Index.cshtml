@@ -1,0 +1,52 @@
+﻿@model IEnumerable<User>
+@{
+    Layout = "_LayoutAdmin";
+}
+
+
+
+<h2>User Listesi</h2>
+
+<p>
+
+    <a asp-action="Create" class="btn btn-success">Yeni Kullanıcı Oluştur</a>
+
+</p>
+
+<table class="table">
+    <thead>
+
+        <tr>
+            
+            <th>Adı</th>
+            <th>SoyAdı</th>
+            <th>Mail Adresi</th>
+            <th>Aksiyon</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Firstname</td>
+                <td>@item.Lastname</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Güncelle</a>
+                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info">Detay</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-warning">Sil</a>
+
+                </td>
+
+            </tr>
+
+            
+        }
+
+    </tbody>
+
+
+</table>
