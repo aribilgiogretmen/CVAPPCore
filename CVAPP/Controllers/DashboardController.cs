@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CVAPP.Controllers
 {
@@ -8,7 +9,7 @@ namespace CVAPP.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Index2()
         {
             return View();

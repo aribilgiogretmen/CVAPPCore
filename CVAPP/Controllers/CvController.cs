@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CVAPP.Controllers
 {
+    [Authorize]
     public class CvController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,6 +23,7 @@ namespace CVAPP.Controllers
             return View(_context.Cv.Include(r=>r.User).ToList());
         }
 
+        [Authorize(Policy = "AdminOnly")]
         public IActionResult Create()
         {
             ViewData["Users"] = _context.User.ToList();
